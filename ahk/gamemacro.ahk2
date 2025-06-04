@@ -29,6 +29,7 @@ leave_button := img_folder . "\leave_button.png"
 back_button := img_folder . "\back_button.png"
 
 WinActivate(midori_hwnd)
+;WinMove(100, 100, 500, 500, midori_hwnd)
 
 Send("^0")
 
@@ -36,74 +37,76 @@ WinActivate(firefox_hwnd)
 
 Send("^0")
 
-res := WaitForImage(seefreinds, &foundX, &foundY, 2000, 10)
+res := WaitForImage(seefreinds, &foundX, &foundY, 2000, 3)
 if (res = true) {
+     Sleep(100)
     ControlClick("x" foundX " y" foundY, firefox_hwnd)
-     Sleep(200)
+     Sleep(50)
 }
 
-res := WaitForImage(challange, &foundX, &foundY, 2000, 10)
+res := WaitForImage(challange, &foundX, &foundY, 2000, 3)
 if (res = true) {
-    Sleep(200)
+     Sleep(100)
     ControlClick("x" foundX " y" foundY, firefox_hwnd)
-     Sleep(200)
+     Sleep(50)
 }
 
-res := WaitForImage(table, &foundX, &foundY, 3000, 10)
+res := WaitForImage(table, &foundX, &foundY, 3000, 3)
 if (res = true) {
-    Sleep(200)
+     Sleep(100)
     ControlClick("x" foundX " y" foundY, firefox_hwnd)
-     Sleep(200)
+     Sleep(50)
 }
 
 ;;;;;;;;accepting
 
 WinActivate(midori_hwnd)
 
-res := WaitForImage(playnow, &foundX, &foundY, 5000, 10)
+res := WaitForImage(playnow, &foundX, &foundY, 5000, 3)
 
 if (res = true) {
-    Sleep(200)
-    ControlClick("x" foundX " y" foundY, midori_hwnd)
     Sleep(100)
+    ControlClick("x" foundX " y" foundY, midori_hwnd)
+    Sleep(50)
 }
 
 WinActivate(firefox_hwnd)
 
-resx := WaitForImage(playnow_ff, &foundX, &foundY, 5000, 10)
+resx := WaitForImage(playnow_ff, &foundX, &foundY, 5000, 3)
 if (resx = true) {
-    Sleep(200)
+     Sleep(50)
     ControlClick("x" foundX " y" foundY, firefox_hwnd)
-    Sleep(100)
+    Sleep(50)
 }
 
 WinActivate(midori_hwnd)
 ;click menu
 
-res := WaitForImage(game_menu, &foundX, &foundY, 15000, 80)
+res := WaitForImage(game_menu, &foundX, &foundY, 15000, 3)
 if (res = true) {
-    Sleep(200)
+     Sleep(100)
     ControlClick("x" foundX " y" foundY, midori_hwnd)
     Sleep(100)
 } 
 
-res := WaitForImage(leave_menu, &foundX, &foundY, 15000, 80)
+res := WaitForImage(leave_menu, &foundX, &foundY, 3000, 3)
 if (res = true) {
-    Sleep(200)
+     Sleep(100)
     ControlClick("x" foundX " y" foundY, midori_hwnd)
-    Sleep(300)
+    Sleep(100)
 } 
 
-res := WaitForImage(leave_button, &foundX, &foundY, 15000, 80)
+res := WaitForImage(leave_button, &foundX, &foundY, 3000, 3)
 if (res = true) {
-    Sleep(300)
+    Sleep(50)
     ControlClick("x" foundX " y" foundY, midori_hwnd)
-    Sleep(300)
+    Sleep(50)
 }
 
 WinActivate(firefox_hwnd)
 
-res := WaitForImage(back_button, &foundX, &foundY, 15000, 80)
+res := WaitForImage(back_button, &foundX, &foundY, 10000, 3)
 if (res = true) {
+     Sleep(100)
     ControlClick("x" foundX " y" foundY, firefox_hwnd)
 }
