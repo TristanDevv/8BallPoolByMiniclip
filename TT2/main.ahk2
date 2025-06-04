@@ -1,0 +1,43 @@
+if !A_IsAdmin
+{
+    ; Pfad zu deiner AutoHotkey.exe — anpassen!
+    ahkExe := "C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe"
+    Run('*RunAs "' ahkExe '" "' A_ScriptFullPath '"')
+    ExitApp()
+}
+
+WaitForImage(imagePath, &outX, &outY, timeoutMs := 5000, tolerance := 70) {
+    start := A_TickCount
+    Loop {
+        result := ImageSearch(&outX, &outY, 0, 0, A_ScreenWidth, A_ScreenHeight, "*" tolerance " " imagePath)
+        if (result = 1)
+            return true
+        if ((A_TickCount - start) > timeoutMs)
+            return false
+        Sleep(25)
+    }
+}
+
+
+
+img := "C:\Users\Tristan\Desktop\AutoTransfer\TT2\img"
+
+connect := img . "\connect.png"
+
+memu_hwnd := "ahk_exe memu.exe"
+
+memu_hwnd_ID := ("ahk_exe memu.exe")
+
+
+WinActivate(memu_hwnd)
+
+Sleep(1000)
+WinMove(memu_hwnd_ID, 100, 100, 1280, 720)
+
+
+
+res := WaitForImage(connect, &foundX, &foundY, 10000, 80)
+
+if (res = true) {
+    ControlClick("x" foundX " y" foundY, memu_hwnd)
+}
