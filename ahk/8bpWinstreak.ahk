@@ -1,3 +1,8 @@
+#Requires AutoHotKey v2.0
+SetTitleMatchMode 2
+
+x_dir := A_WorkingDir
+
 WaitForImage(imagePath, &outX, &outY, timeoutMs := 5000, tolerance := 70) {
     start := A_TickCount
     Loop {
@@ -10,13 +15,10 @@ WaitForImage(imagePath, &outX, &outY, timeoutMs := 5000, tolerance := 70) {
     }
 }
 
-
-;FIreFox is main
-
 midori_hwnd := "ahk_exe midori.exe"
 firefox_hwnd := "ahk_exe firefox.exe"
 
-img_folder := "C:\Users\Tristan\Desktop\AutoTransfer\Img\game"
+img_folder := x_dir . "\img\game"
 
 seefreinds := img_folder . "\see_freinds.png"
 challange := img_folder . "\challenge.png"
